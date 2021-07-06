@@ -1,0 +1,13 @@
+version: '3.7'
+
+services: 
+    db:
+        image: mysql
+        restart: always
+        ports: 
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: erbalo
+            MYSQL_PASSWORD: erbalo123
+            MYSQL_DATABASE: red-social
