@@ -1,6 +1,7 @@
 package modelos
 
 import (
+	"api/src/tipos"
 	"errors"
 	"strings"
 	"time"
@@ -17,17 +18,17 @@ type Usuario struct {
 }
 
 // Preparar vai chamar os metodos para valdar e formatar o usuario recebido
-func (usuario *Usuario) Preparar() error {
+func (usuario *Usuario) Preparar(etapa tipos.TipoRegistro) error {
 	usuario.formatar()
 
-	if erro := usuario.validar(); erro != nil {
+	if erro := usuario.validar(etapa); erro != nil {
 		return erro
 	}
 
 	return nil
 }
 
-func (usuario *Usuario) validar() error {
+func (usuario *Usuario) validar(etapa tipos.TipoRegistro) error {
 	if usuario.Nome == "" {
 		return errors.New("O nome e obrigatorio e nao pode estar em branco")
 	}
@@ -40,7 +41,7 @@ func (usuario *Usuario) validar() error {
 		return errors.New("O email e obrigatorio e nao pode estar em branco")
 	}
 
-	if usuario.Senha == "" {
+	if etapa == tipos.REGISTRO && usuario.Senha == "" {
 		return errors.New("A senha e obrigatoria e nao pode estar em branco")
 	}
 
