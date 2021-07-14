@@ -1,6 +1,7 @@
 package modelos
 
 import (
+	"api/src/seguranca"
 	"api/src/tipos"
 	"errors"
 	"strings"
@@ -21,7 +22,9 @@ type Usuario struct {
 
 // Preparar vai chamar os metodos para valdar e formatar o usuario recebido
 func (usuario *Usuario) Preparar(etapa tipos.TipoRegistro) error {
-	usuario.formatar()
+	if erro := usuario.formatar(etapa); erro != nil {
+		return erro
+	}
 
 	if erro := usuario.validar(etapa); erro != nil {
 		return erro
@@ -54,8 +57,19 @@ func (usuario *Usuario) validar(etapa tipos.TipoRegistro) error {
 	return nil
 }
 
-func (usuario *Usuario) formatar() {
+func (usuario *Usuario) formatar(etapa tipos.TipoRegistro) error {
 	usuario.Nome = strings.TrimSpace(usuario.Nome)
 	usuario.Nick = strings.TrimSpace(usuario.Nick)
 	usuario.Email = strings.TrimSpace(usuario.Email)
+
+	if etapa == tipos.REGISTRO {
+		senhaComHash, erro := seguranca.Hash(usuario.Senha)
+		if erro != nil {
+			return erro
+		}
+
+		usuario.Senha = string(senhaComHash)
+	}
+
+	return nil
 }
