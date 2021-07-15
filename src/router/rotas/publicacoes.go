@@ -32,7 +32,7 @@ var rotasPublicacoes = []Rota{
 	},
 	{
 		URI:                "/publicacoes/{publicacaoId}",
-		Metodo:             http.MethodPost,
+		Metodo:             http.MethodPut,
 		Funcao:             controllers.AtualizarPublicacao,
 		RequerAutenticacao: true,
 	},
@@ -40,6 +40,12 @@ var rotasPublicacoes = []Rota{
 		URI:                "/publicacoes/{publicacaoId}",
 		Metodo:             http.MethodDelete,
 		Funcao:             controllers.DeletarPublicacao,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/publicacoes/{publicacaoId}/curtir",
+		Metodo:             http.MethodPatch,
+		Funcao:             controllers.CurtirPublicacao,
 		RequerAutenticacao: true,
 	},
 }

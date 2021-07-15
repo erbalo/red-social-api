@@ -25,6 +25,8 @@ values
 insert into publicacoes (titulo, conteudo, autor_id)
 values
 ("Publicacao 1", "Publicacao 1", 1),
+("Publicacao 2 de 1", "Publicacao 2 de 1", 1),
+("Publicacao 3 de 1", "Publicacao 3 de 1", 1),
 ("Publicacao 2", "Publicacao 1", 2),
 ("Publicacao 3", "Publicacao 1", 3),
 ("Publicacao 4", "Publicacao 1", 4);
