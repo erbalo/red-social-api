@@ -9,7 +9,7 @@ values
 ("usuario 7", "usuario7", "usuario7@test.com", "$2a$10$N3OaPVjbQ9IVfUpnECnEbezrrHQg7SUTg5l7XHHF8oXdIzD1GBwxq"),
 ("usuario 8", "usuario8", "usuario8@test.com", "$2a$10$IweE/kB08SfI7l94klhBqewBcTyxh6m2qj5ZVta0ihIvwoPwvz.KC");
 
-insert into seguidores(usuario_id, seguidor_id)
+insert into seguidores (usuario_id, seguidor_id)
 values
 (1,2),
 (1,3),
@@ -21,3 +21,10 @@ values
 (4,1),
 (5,8),
 (7,6);
+
+insert into publicacoes (titulo, conteudo, autor_id)
+values
+("Publicacao 1", "Publicacao 1", 1),
+("Publicacao 2", "Publicacao 1", 2),
+("Publicacao 3", "Publicacao 1", 3),
+("Publicacao 4", "Publicacao 1", 4);
