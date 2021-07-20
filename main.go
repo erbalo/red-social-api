@@ -23,6 +23,7 @@ func init() {
 
 func main() {
 	config.Carregar()
+	fmt.Printf("Rondando conexao em %s\n", config.StringConexaoBanco)
 	fmt.Printf("Rodando API na porta %d...\n", config.Porta)
 
 	r := router.Gerar()
