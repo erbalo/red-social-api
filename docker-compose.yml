@@ -1,5 +1,6 @@
 version: '3.7'
 
+# Services for red social api
 services: 
     db:
         image: mysql
